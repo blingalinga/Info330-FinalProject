@@ -23,7 +23,7 @@ DROP TABLE genres;
 
 ALTER TABLE genres_cleaned RENAME TO genres;
 
---Second NF Table with genres separated out
+--Third NF Table with genres separated out
 CREATE TABLE second_temp as
 SELECT * FROM firstnf_movie_data;
 
@@ -36,6 +36,6 @@ SELECT DISTINCT *
 FROM second_temp;
 
 --Rename the temp_table and drop tables that we do not need anymore
-ALTER TABLE temp_table RENAME TO secondnf_movie_data;
+ALTER TABLE temp_table RENAME TO thirdnf_movie_data;
 
 DROP TABLE second_temp;
