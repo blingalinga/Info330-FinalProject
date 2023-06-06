@@ -39,3 +39,9 @@ FROM second_temp;
 ALTER TABLE temp_table RENAME TO thirdnf_movie_data;
 
 DROP TABLE second_temp;
+
+-- -- drops the temporary tables we do not need anymore, leaving the 1NF table
+drop table imported_movie_data;
+drop table firstnf;
+drop table first_temp;
+drop table firstnf_movie_data;
