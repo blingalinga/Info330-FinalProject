@@ -74,3 +74,23 @@ WHERE date_x LIKE '%2023%'
 GROUP BY m.names
 ORDER BY AVG(score) DESC
 LIMIT 10;
+
+--Thomas's Queries 
+
+--Query 1: Counting the Number of Movies by Country
+SELECT country, COUNT(*) AS movie_count
+FROM thirdnf_movie_data
+GROUP BY country
+ORDER BY movie_count DESC;
+
+--Query 2: identify dominant genres for each country in the Dataset
+SELECT country, dominant_genres
+FROM (
+    SELECT m.country, g.genre_1 AS dominant_genres, 
+           ROW_NUMBER() OVER (PARTITION BY m.country ORDER BY COUNT(*) DESC) AS rn
+    FROM thirdnf_movie_data AS m
+    JOIN genres AS g ON m.names = g.names
+    GROUP BY m.country, g.genre_1
+) AS sub
+WHERE rn = 1
+ORDER BY country;
