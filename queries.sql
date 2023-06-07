@@ -59,3 +59,18 @@ FROM (
 ) AS subquery
 GROUP BY genre, release_year
 ORDER BY release_year, genre;
+
+-- bernita's queries
+-- query 1: Determine which movies are originally released in languages other than English:
+SELECT m.names
+FROM thirdnf_movie_data AS m
+WHERE orig_lang <> 'English'
+GROUP BY orig_lang;
+
+-- query2: Identify movies released within the current year (2023), and see what the top 10 movies were based on user rating:
+SELECT m.names, AVG(score)
+FROM thirdnf_movie_data AS m
+WHERE date_x LIKE '%2023%'
+GROUP BY m.names
+ORDER BY AVG(score) DESC
+LIMIT 10;
