@@ -31,8 +31,3 @@ join first_temp on first_temp.names=firstnf.names;
 
 alter table firstnf_movie_data
 drop column 'names:1';
-
--- -- drops the temporary tables we do not need anymore, leaving the 1NF table
--- drop table imported_movie_data;
--- drop table firstnf;
--- drop table first_temp;
